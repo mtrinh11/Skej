@@ -53,8 +53,10 @@ const Login = (props) => {
           type="password"
           onChange={handlePasswordChange}
         />
-        <Button type="submit">Login</Button>
-        <Link to="/signup">Sign Up</Link>
+        <Button type="submit" theme="primary" themeType="contained">Login</Button>
+        <p>New to Skej? Go to our {" "}
+        {<Link to="/signup">Sign Up</Link>}{" "}page :)
+        </p>
       </form>
     </section>
   );
