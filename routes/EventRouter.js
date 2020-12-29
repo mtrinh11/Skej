@@ -10,9 +10,4 @@ Router.put("/:eventId", controller.EditEvent)
 Router.delete("/:eventId", controller.DeleteEvent)
 
 
-//     GetEventsByUser,
-//     EditEvent,
-//     DeleteEvent,
-//     GetEventsOfFriends,
-//   };
-  
+module.exports = Router

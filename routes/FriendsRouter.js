@@ -5,3 +5,6 @@ Router.post("/addFriend", controller.AddFriend)
 Router.get("/:friendId", controller.GetFriend)
 Router.get("/:userId/friends", controller.GetAllFriends)
 Router.delete("/:friendId", controller.RemoveFriend)
+
+
+module.exports = Router
