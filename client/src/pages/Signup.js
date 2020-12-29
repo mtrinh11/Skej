@@ -6,7 +6,7 @@ import { changeEmailInput,
   changeNameInput,
   changeUsernameInput 
 } from '../store/actions/AuthActions'
-
+import {signupUser} from '../store/actions/UserActions'
 
 const mapStateToProps = ({authState}) => {
   return {
@@ -19,12 +19,12 @@ const mapActionToProps = (dispatch) => {
     changeEmailInput: (input) => dispatch(changeEmailInput(input)),
     changePasswordInput: (input) => dispatch(changePasswordInput(input)),
     changeNameInput: (input) => dispatch(changeNameInput(input)),
-    changeUsernameInput: (input) => dispatch(changeUsernameInput(input))
+    changeUsernameInput: (input) => dispatch(changeUsernameInput(input)),
+    signupUser: (formData) => dispatch(signupUser(formData))
   }
 };
 
 const Signup = (props) => {
-  const {} = props;
 
   const handleEmailChange = ({ target }) => {
     props.changeEmailInput(target.value)
@@ -45,11 +45,18 @@ const Signup = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
+      props.signupUser({
+        name: props.authState.inputName,
+        email: props.authState.inputEmail,
+        userName: props.authState.inputUsername,
+        password: props.authState.inputPassword
+      })
+
     } catch (error) {
       throw error;
     }
   };
-  console.log(props.authState)
+
   return (
     <section>
       <form onSubmit={handleSubmit}>
