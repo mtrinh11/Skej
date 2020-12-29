@@ -1,6 +1,6 @@
 const AppRouter = require("./routes/AppRouter");
 const express = require("express");
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 
 // Require Middleware
