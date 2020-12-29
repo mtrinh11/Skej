@@ -1,4 +1,4 @@
-const { Event, User } = require("../models");
+const { Event, User, Friends } = require("../models");
 
 const CreateEvent = async (request, response) => {
   try {
@@ -80,14 +80,21 @@ const DeleteEvent = async (request, response) => {
 
 const GetEventsOfFriends = async (req, res) => {
   try {
-    const events = await GetEventsOfFriends.findAll({
+    const events = await Friends.findAll({
       where: { user_id: req.params.user_id },
       include: [
         {
           model: User,
           as: "friends",
           attributes: ["id", "user_name"],
-          include: [{ model: Event, where: { private: false } }],
+          include: [
+            { model: Event, where: { private: false } },
+            {
+              model: Event,
+              where: { private: true },
+              attributes: ["start_time", "end_time"],
+            },
+          ],
         },
       ],
     });
