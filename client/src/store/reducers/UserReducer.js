@@ -2,7 +2,9 @@
 import {GET_USER, LOGOUT_USER} from '../types'
 
 const initialState = {
-    userInfo: {}
+    userInfo: {},
+    events: [],
+    friends: []
 }
 
 const UserReducer = (state = initialState, action) => {
@@ -10,7 +12,7 @@ const UserReducer = (state = initialState, action) => {
         case GET_USER:
             return {...state}
         case LOGOUT_USER:
-            return {...state, userInfo: {}}
+            return {...state, userInfo: action.payload}
         default:
             return {...state}
     }
