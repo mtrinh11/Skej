@@ -1,15 +1,31 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "react-md";
+import { changeEmailInput, changePasswordInput } from '../store/actions/AuthActions'
 
-const mapStateToProps = (state = {});
+const mapStateToProps = ({authState}) => {
+  return {
+    authState
+  }
+};
 
-const mapDispatchToProps = (dispatch = {});
+const mapActionToProps = (dispatch) => {
+  return {
+    changeEmailInput: (input) => dispatch(changeEmailInput(input)),
+    changePasswordInput: (input) => dispatch(changePasswordInput(input))
+  }
+};
 
 const Login = (props) => {
   const {} = props;
 
-  const handleChange = ({ target }) => {};
+  const handleEmailChange = ({ target }) => {
+    props.changeEmailInput(target.value)
+  };
+  
+  const handlePasswordChange = ({ target }) => {
+    props.changePasswordInput(target.value)
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +34,7 @@ const Login = (props) => {
       throw error;
     }
   };
-
+  console.log(props.authState)
   return (
     <section>
       <form onSubmit={handleSubmit}>
@@ -28,14 +44,14 @@ const Login = (props) => {
           title="EMAIL"
           name="email"
           type="email"
-          onChange={handleChange}
+          onChange={handleEmailChange}
         />
         <TextField
           placeholder="PASSWORD"
           title="PASSWORD"
           name="password"
           type="password"
-          onChange={handleChange}
+          onChange={handlePasswordChange}
         />
         <Button type="submit">Login</Button>
         <Link to="/signup">Sign Up</Link>
