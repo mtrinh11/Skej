@@ -3,9 +3,10 @@ const { User, Event, Todo, Alerts, Requests } = require("../models");
 
 const CreateUser = async (request, response) => {
   try {
-    const { name, email, username, password } = request.body;
-    const passwordDigest = await hashPassword(password);
-    const user = await User.create({ name, username, email, passwordDigest });
+    const { name, email, userName, password } = request.body;
+    const user_name = userName;
+    const password_digest = await hashPassword(password);
+    const user = await User.create({ name, user_name, email, password_digest });
     console.log("UserController CreateUser hits. User:", user);
     response.send(user);
   } catch (error) {
@@ -45,7 +46,7 @@ const LoginUser = async (request, response) => {
     });
     if (
       user &&
-      (await passwordValid(request.body.password, user.passwordDigest))
+      (await passwordValid(request.body.password, user.password_digest))
     ) {
       let payload = {
         _id: user.id,
