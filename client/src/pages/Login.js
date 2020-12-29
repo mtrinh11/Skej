@@ -4,7 +4,7 @@ import { Button, TextField } from "react-md";
 
 const mapStateToProps = (state = {});
 
-const mapActionToProps = (dispatch = {});
+const mapDispatchToProps = (dispatch = {});
 
 const Login = (props) => {
   const {} = props;
@@ -43,4 +43,4 @@ const Login = (props) => {
     </section>
   );
 };
-export default connect(mapStateToProps, mapActionToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
