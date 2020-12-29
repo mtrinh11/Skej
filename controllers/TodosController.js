@@ -25,12 +25,14 @@ const GetSingleTodo = async (request, response) => {
     }
 }
 
-const GetAllTodos = async (request, response) => {
+const GetTodosByAccount = async (request, response) => {
     try{
-        const allTodos = await Todo.findAll()
-        response.send(allTodos)
+        const userTodos = await Todo.findAll(
+            {where: {user_id: request.params.user_id}}
+        )
+        response.send(userTodos)
     }catch(error){
-        console.log('Todo Cotroller GetAllTodos fail')
+        console.log('Todo Controller GetTodoByAccount fail')
         throw error
     }
 }
@@ -64,7 +66,7 @@ const DeleteTodo = async (request, response) => {
 module.exports = {
     CreateTodo,
     GetSingleTodo,
-    GetAllTodos,
+    GetTodosByAccount,
     EditTodo,
     DeleteTodo
 }
