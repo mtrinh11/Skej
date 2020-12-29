@@ -1,5 +1,4 @@
-
-import {GET_USER, LOGOUT_USER} from '../types'
+import { GET_USER, LOGOUT_USER } from "../types";
 
 const initialState = {
     userInfo: {},

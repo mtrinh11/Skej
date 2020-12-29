@@ -6,10 +6,10 @@ const Home = (props) => {
     <section>
       <h1>SKEJ</h1>
       <div>
-        <Button>
+        <Button theme="primary" themeType="contained">
           <NavLink to="/signup">Sign Up</NavLink>
         </Button>
-        <Button>
+        <Button theme="primary" themeType="contained">
           <Link to="/login">Login</Link>
         </Button>
       </div>
