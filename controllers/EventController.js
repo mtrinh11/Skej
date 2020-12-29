@@ -49,20 +49,31 @@ const GetEventsByUser = async (request, response) => {
 }
 const EditEvent = async (request, response) => {
     try {
-
-        console.log('EventController: Event hits')
+        let eventId = parseInt(request.params.event_id)
+        let eventDetails = request.body
+        let editedEvent = await Event.update(eventDetails,{
+            where: {id: eventId}
+        })
+        console.log('EventController: EditEvent hits')
+        response.send(editedEvent)
     }catch(error){
-        console.log('EventController: Event fails')
+        console.log('EventController: EditEvent fails')
         throw error
     }
 }
 
 const DeleteEvent = async (request, response) => {
     try {
-
-        console.log('EventController: Event hits')
+        let eventId = parseInt(request.params.event_id)
+        await Event.destroy({
+            where: {
+                id: eventId
+            }
+        })
+        response.send({message: `Deleted Event with an id of ${eventId}`})
+        console.log('EventController: DeleteEvent hits')
     }catch(error){
-        console.log('EventController: Event fails')
+        console.log('EventController: DeleteEvent fails')
         throw error
     }
 }
