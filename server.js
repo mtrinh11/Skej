@@ -1,7 +1,9 @@
 const AppRouter = require("./routes/AppRouter");
 const express = require("express");
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 const app = express();
+
+const path = require("path");
 
 // Require Middleware
 const logger = require("morgan");

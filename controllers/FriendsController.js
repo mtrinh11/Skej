@@ -5,13 +5,9 @@ const AddFriend = async (request, response) => {
   try {
     let userId = parseInt(request.params.user_id);
     let friendId = parseInt(request.params.friend_id);
-    const user = await User.findByPk(userId);
-    // const friend = await User.findByPk(friendId);
     let newFriendship = await Friends.create({
-      user_id: parseInt(user.datavalues.id),
-      //   userId: parseInt(user.datavalues.id),
-      friend_id: parseInt(friend.datavalues.id),
-      //   friendId: parseInt(friend.datavalues.id),
+      user_id: userId,
+      friend_id: friendId,
     });
     console.log(
       "FriendController: AddFriend hits. User and Friend:",
@@ -34,6 +30,9 @@ const GetFriend = async (request, response) => {
         user_id: userId,
         friend_id: friendId,
       },
+      include: [
+        { model: User, as: "friends", attributes: ["id", "user_name"] },
+      ],
     });
     response.send(friend);
     console.log("FriendController: GetFriend hits");
