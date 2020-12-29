@@ -22,3 +22,12 @@ export const __CheckSession = async (token) => {
       throw error
     }
 }
+
+export const __CreateUser = async(userData) => {
+  try {
+      const res = await ApiClient.post('/user/register', userData)
+      return res.data
+  } catch (error) {
+      throw error
+  }
+}
