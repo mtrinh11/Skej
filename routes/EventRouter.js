@@ -3,11 +3,11 @@ const controller = require("../controllers/EventController");
 
 Router.post("/create", controller.CreateEvent)
 Router.get("/all", controller.GetAllEvents)
-Router.get("/:eventId", controller.GetOneEvent)
-Router.get("/:userId/:eventId", controller.GetEventsByUser)
+Router.get("/:event_id", controller.GetOneEvent)
+Router.get("/user/:user_id", controller.GetEventsByUser)
 Router.get("/friend/:friendId/", controller.GetEventsOfFriends)
-Router.put("/:eventId", controller.EditEvent)
-Router.delete("/:eventId", controller.DeleteEvent)
+Router.put("/:event_id", controller.EditEvent)
+Router.delete("/:event_id", controller.DeleteEvent)
 
 
 module.exports = Router
