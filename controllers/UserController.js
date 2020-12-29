@@ -27,7 +27,7 @@ const GetUser = async (request, response) => {
         { model: Alerts },
         { model: Event },
         { model: Todo },
-        { model: User, as: "friends", attributes: ["id", "user_name"] },
+        // { model: User, as: "friends", attributes: ["id", "user_name"] },
       ],
     });
     response.send(user);
