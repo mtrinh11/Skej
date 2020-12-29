@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Button } from "react-md";
 
 const Home = (props) => {
@@ -7,7 +7,7 @@ const Home = (props) => {
       <h1>SKEJ</h1>
       <div>
         <Button>
-          <Link to="/signup">Sign Up</Link>
+          <NavLink to="/signup">Sign Up</NavLink>
         </Button>
         <Button>
           <Link to="/login">Login</Link>
