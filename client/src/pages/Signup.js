@@ -91,7 +91,7 @@ const Signup = (props) => {
         />
         <Button type="submit" theme="primary" themeType="contained">Sign Up</Button>
         <p>Already signed up? Go to our {" "}
-        {<Link to="/login">Login</Link>}{" "}page :)
+        {<Link to="/login">Login</Link>}{" "}page!
         </p>
       </form>
     </section>

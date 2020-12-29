@@ -61,7 +61,7 @@ const Login = (props) => {
         />
         <Button type="submit" theme="primary" themeType="contained">Login</Button>
         <p>New to Skej? Go to our {" "}
-        {<Link to="/signup">Sign Up</Link>}{" "}page :)
+        {<Link to="/signup">Sign Up</Link>}{" "}page!
         </p>
       </form>
     </section>
