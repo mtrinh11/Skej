@@ -14,9 +14,9 @@ const CreateEvent = async (request, response) => {
 
 const GetOneEvent = async (request, response) => {
   try {
-    const oneEvent = await Event.findByPk(request.params.post_id);
-    response.send(oneEvent);
+    const oneEvent = await Event.findByPk(request.params.event_id);
     console.log("EventController: GetOneEvent hits, event:", oneEvent);
+    response.send(oneEvent);
   } catch (error) {
     console.log("EventController: GetOneEvent fails");
     throw error;
@@ -67,8 +67,8 @@ const DeleteEvent = async (request, response) => {
     let eventId = parseInt(request.params.event_id);
     await Event.destroy({
       where: {
-        id: eventId,
-      },
+        id: eventId
+      }
     });
     response.send({ message: `Deleted Event with an id of ${eventId}` });
     console.log("EventController: DeleteEvent hits");
