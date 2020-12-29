@@ -83,8 +83,10 @@ const Signup = (props) => {
           type="password"
           onChange={handlePasswordChange}
         />
-        <Button type="submit">Sign Up</Button>
-        <Link to="/login">Login</Link>
+        <Button type="submit" theme="primary" themeType="contained">Sign Up</Button>
+        <p>Already signed up? Go to our {" "}
+        {<Link to="/login">Login</Link>}{" "}page :)
+        </p>
       </form>
     </section>
   );
