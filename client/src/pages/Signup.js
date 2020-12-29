@@ -52,7 +52,6 @@ const Signup = (props) => {
   console.log(props.authState)
   return (
     <section>
-      <p> hello</p>
       <form onSubmit={handleSubmit}>
         <h3>Sign Up</h3>
         <TextField
