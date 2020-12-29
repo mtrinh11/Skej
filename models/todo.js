@@ -1,21 +1,21 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class Alerts extends Model {
+  class Todo extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Alerts.belongsTo(models.User, {
+      Todo.belongsTo(models.User, {
         foreignKey: "user_id",
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
       });
     }
   }
-  Alerts.init(
+  Todo.init(
     {
       user_id: {
         type: DataTypes.INTEGER,
@@ -25,16 +25,20 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      msg: {
+      title: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
         type: DataTypes.STRING,
         allowNull: false,
       },
     },
     {
       sequelize,
-      modelName: "Alerts",
-      tableName: "alerts",
+      modelName: "Todo",
+      tableName: "todos",
     }
   );
-  return Alerts;
+  return Todo;
 };
