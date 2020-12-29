@@ -1,5 +1,5 @@
 const { hashPassword, passwordValid, createToken } = require("../middleware");
-const { User, Event, Todo, Alerts } = require("../models");
+const { User, Event, Todo, Alerts, Requests } = require("../models");
 
 const CreateUser = async (request, response) => {
   try {
@@ -19,6 +19,10 @@ const GetUser = async (request, response) => {
     const user = await User.findByPk(request.params.user_id, {
       attributes: ["id", "user_name"],
       include: [
+        {
+          model: Requests,
+          include: [{ model: User, attributes: ["id", "user_name"] }],
+        },
         { model: Alerts },
         { model: Event },
         { model: Todo },
