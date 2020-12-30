@@ -1,3 +1,5 @@
+import {useState} from "react"
+
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, TextField } from "react-md";
@@ -20,6 +22,8 @@ const mapActionToProps = (dispatch) => {
 
 const Login = (props) => {
 
+  const [loadingError, setloadingError] = useState(false)
+
   const handleEmailChange = ({ target }) => {
     props.changeEmailInput(target.value)
   };
@@ -29,6 +33,7 @@ const Login = (props) => {
   };
 
   const handleSubmit = async (e) => {
+    console.log(props)
     e.preventDefault();
     try {
       await props.submitGetUser({
@@ -37,7 +42,7 @@ const Login = (props) => {
       })
       props.history.push('/calendar')
     } catch (error) {
-      
+      setloadingError(true)
       throw error;
     }
   };
@@ -61,6 +66,7 @@ const Login = (props) => {
           type="password"
           onChange={handlePasswordChange}
         />
+        {loadingError ? <p> Error Signing In </p> : <p></p>}
         <Button type="submit" theme="primary" themeType="contained">Login</Button>
         <p>New to Skej? Go to our {" "}
         {<Link to="/signup">Sign Up</Link>}{" "}page!

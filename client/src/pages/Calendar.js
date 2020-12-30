@@ -51,12 +51,12 @@ const mapActionToProps = (dispatch) => {
     getAllFriends: (id) => dispatch(getAllFriends(id)),
     getFriend: (id) => dispatch(getFriend(id)),
     removeFriend: (userId, friendId) =>
-      dispatch(removeFriend(userId, friendId)),
+    dispatch(removeFriend(userId, friendId)),
 
     createRequest: (userId, requestedId) =>
-      dispatch(createRequest(userId, requestedId)),
+    dispatch(createRequest(userId, requestedId)),
     deleteRequest: (userId, requestedId) =>
-      dispatch(deleteRequest(userId, requestedId)),
+    dispatch(deleteRequest(userId, requestedId)),
 
     createTodo: (data) => dispatch(createTodo(data)),
     getTodo: (todoId) => dispatch(getTodo(todoId)),
@@ -82,6 +82,9 @@ const Calendar = () => {
         slotEventOverlap="True"
         nowIndicator="True"
         dateClick={handleDateClick}
+        events={[{ title: 'event 1', date: '2020-12-27', start:'2020-12-27T10:10:12' , end: '2020-12-27T11:10:00'},
+        { title: 'event 1', date: '2020-12-27', start:'2020-12-27T10:10:12' , end: '2020-12-27T11:10:00'},
+        { title: 'event 2', date: '2020-12-27' }]}
       />
     </div>
   );

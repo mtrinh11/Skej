@@ -12,9 +12,9 @@ const store = createStore(
         userState: UserReducer,
         authState: AuthReducer,
         eventState: EventReducer,
-        friendState: FriendReducer,
-        requestState: RequestReducer,
-        todoState: TodoReducer
+    //     friendState: FriendReducer,
+    //     requestState: RequestReducer,
+    //     todoState: TodoReducer
     }),
     applyMiddleware(thunk)
 )
