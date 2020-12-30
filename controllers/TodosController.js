@@ -3,7 +3,11 @@ const { Todo } = require("../models");
 const CreateTodo = async (request, response) => {
   try {
     const body = request.body;
-    const todo = await Todo.create(body);
+    const todo = await Todo.create({
+      user_id: body.userId,
+      title: body.title,
+      description: body.description,
+    });
     response.send(todo);
   } catch (error) {
     response.status(401).send({ message: "Sorry but there was a problem" });

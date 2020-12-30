@@ -3,7 +3,17 @@ const { Event, User, Friends } = require("../models");
 const CreateEvent = async (request, response) => {
   try {
     const body = request.body;
-    const event = await Event.create(body);
+    const event = await Event.create({
+      user_id: body.userId,
+      title: body.title,
+      description: body.description,
+      start: body.start,
+      end: body.end,
+      start_time: body.startTime,
+      end_time: body.endTime,
+      importance: body.importance,
+      private: body.private,
+    });
     console.log("EventController: CreateEvent hits. Event:", event);
     response.send(event);
   } catch (error) {
@@ -67,8 +77,8 @@ const DeleteEvent = async (request, response) => {
     let eventId = parseInt(request.params.event_id);
     await Event.destroy({
       where: {
-        id: eventId
-      }
+        id: eventId,
+      },
     });
     response.send({ message: `Deleted Event with an id of ${eventId}` });
     console.log("EventController: DeleteEvent hits");
