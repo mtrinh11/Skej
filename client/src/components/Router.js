@@ -9,7 +9,7 @@ import Calendar from '../pages/Calendar'
 
 const Router = (props) => {
   return (
-    <section>
+    <section style={{height: '100%'}}>
       <Switch>
         <Route 
         exact path="/" 
