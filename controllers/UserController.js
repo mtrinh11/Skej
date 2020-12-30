@@ -7,10 +7,8 @@ const CreateUser = async (request, response) => {
     const user_name = userName;
     const password_digest = await hashPassword(password);
     const user = await User.create({ name, user_name, email, password_digest });
-    console.log("UserController CreateUser hits. User:", user);
     response.send(user);
   } catch (error) {
-    console.log("UserController CreateUser fails");
     throw error;
   }
 };
@@ -27,13 +25,11 @@ const GetUser = async (request, response) => {
         { model: Alerts },
         { model: Event },
         { model: Todo },
-        { model: User, as: "friends" },
+        { model: User, as: "friends", attributes: ["id", "user_name"] },
       ],
     });
     response.send(user);
-    console.log("UserController GetUser hits. User:", user);
   } catch (error) {
-    console.log("UserController GetUser fails");
     throw error;
   }
 };
@@ -50,16 +46,13 @@ const LoginUser = async (request, response) => {
     ) {
       let payload = {
         _id: user.id,
-        username: user.username,
+        userName: user.user_name,
       };
       let token = createToken(payload);
-      console.log("UserController LoginUser success, Payload:", payload);
       return response.send({ user, token });
     }
-    console.log("UserController LoginUser bad password");
     return response.status(401).send({ message: `Unauthorized!` });
   } catch (error) {
-    console.log("UserController LoginUser fails");
     throw error;
   }
 };
@@ -68,7 +61,7 @@ const SessionStatus = async (request, response) => {
   try {
     const { token } = response.locals;
     const user = await User.findByPk(token._id, {
-      attributes: ["id", "username", "email]"],
+      attributes: ["id", "user_name"],
     });
     response.send({ user, status: "OK" });
   } catch (error) {
