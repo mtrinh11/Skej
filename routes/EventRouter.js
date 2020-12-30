@@ -10,4 +10,4 @@ Router.put("/:event_id", controller.EditEvent)
 Router.delete("/:event_id", controller.DeleteEvent)
 
 
-module.exports = Router
+module.exports = Router;
