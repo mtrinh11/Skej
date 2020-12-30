@@ -50,7 +50,7 @@ const EditTodo = async (request, response) => {
 
 const DeleteTodo = async (request, response) => {
   try {
-    let todoId = parseInt(request, params.todo_id);
+    let todoId = parseInt(request.params.todo_id);
     await Todo.destroy({ where: { id: todoId } });
     response.send({
       status: "OK",

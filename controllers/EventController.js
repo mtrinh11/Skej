@@ -88,12 +88,12 @@ const GetEventsOfFriends = async (req, res) => {
           as: "friends",
           attributes: ["id", "user_name"],
           include: [
-            { model: Event, where: { private: false } },
-            {
-              model: Event,
-              where: { private: true },
-              attributes: ["start_time", "end_time"],
-            },
+            { model: Event },
+            // {
+            //   model: Event,
+            //   where: { private: true },
+            //   attributes: ["start_time", "end_time"],
+            // },
           ],
         },
       ],
