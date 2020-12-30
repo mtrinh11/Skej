@@ -45,3 +45,29 @@ Hook up portions of the backend
 Styling
 
 Event Parsing
+
+
+
+so I need to have a reducer for everything in the services
+
+
+All Todos:
+    Reducers/actions for 
+        Friends
+        Requests
+
+
+David
+    
+
+Jady
+    EventReducer/EventAction
+
+Nico
+    Dark Mode
+
+Minh
+
+
+Schuyler
+    Sidebar
