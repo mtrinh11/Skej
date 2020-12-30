@@ -90,39 +90,26 @@ const DeleteEvent = async (request, response) => {
 
 const GetEventsOfFriends = async (req, res) => {
   try {
-    const friends = await Friends.findAll({
-      where: { user_id: req.params.user_id },
+    const private = await User.findByPk(req.params.friend_id, {
+      attributes: ["id", "user_name"],
       include: [
         {
-          model: User,
-          as: "friends",
-          attributes: ["id"],
+          model: Event,
+          where: { private: true },
+          attributes: ["start", "end", "start_time", "end_time"],
         },
       ],
     });
-    let events = [];
-    for (let i = 0; i < friends.length; i++) {
-      let id = friends[i].friend_id;
-      const event = await Event.findAll({
-        where: { user_id: id, private: true },
-        attributes: ["start", "end", "start_time", "end_time"],
-        include: [
-          {
-            model: User,
-            attributes: ["id", "user_name"],
-          },
-        ],
-        where: { user_id: id, private: false },
-        include: [
-          {
-            model: User,
-            attributes: ["id", "user_name"],
-          },
-        ],
-      });
-      event.length > 0 ? (events = events.concat(event)) : null;
-    }
-    res.send(events);
+    const public = await User.findByPk(req.params.user_id, {
+      attributes: ["id", "user_name"],
+      include: [
+        {
+          model: Event,
+          where: { private: false },
+        },
+      ],
+    });
+    res.send({ private, public });
   } catch (error) {
     throw error;
   }
