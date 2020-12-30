@@ -51,12 +51,12 @@ const mapActionToProps = (dispatch) => {
     getAllFriends: (id) => dispatch(getAllFriends(id)),
     getFriend: (id) => dispatch(getFriend(id)),
     removeFriend: (userId, friendId) =>
-      dispatch(removeFriend(userId, friendId)),
+    dispatch(removeFriend(userId, friendId)),
 
     createRequest: (userId, requestedId) =>
-      dispatch(createRequest(userId, requestedId)),
+    dispatch(createRequest(userId, requestedId)),
     deleteRequest: (userId, requestedId) =>
-      dispatch(deleteRequest(userId, requestedId)),
+    dispatch(deleteRequest(userId, requestedId)),
 
     createTodo: (data) => dispatch(createTodo(data)),
     getTodo: (todoId) => dispatch(getTodo(todoId)),
@@ -90,5 +90,4 @@ const Calendar = () => {
   );
 };
 
-export default(Calendar);
-// connect(mapStateToProps, mapActionToProps)
+export default connect(mapStateToProps, mapActionToProps)(Calendar);
