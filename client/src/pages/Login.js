@@ -28,15 +28,16 @@ const Login = (props) => {
     props.changePasswordInput(target.value)
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      props.submitGetUser({
+      await props.submitGetUser({
         email: props.authState.inputEmail,
         password: props.authState.inputPassword
       })
       props.history.push('/calendar')
     } catch (error) {
+      
       throw error;
     }
   };
