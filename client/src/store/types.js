@@ -6,4 +6,23 @@ export const CHANGE_PASSWORD_INPUT = "CHANGE_PASSWORD_INPUT"
 export const CHANGE_NAME_INPUT = "CHANGE_NAME_INPUT"
 export const CHANGE_USERNAME_INPUT = "CHANGE_USERNAME_INPUT"
 
-//Nico's additions
+export const CREATE_EVENT = "CREATE_EVENT"
+export const GET_EVENT = "GET_EVENT"
+export const GET_EVENTS_BY_USER = "GET_EVENTS_BY_USER"
+export const GET_FRIEND_EVENTS = "GET_FRIEND_EVENTS"
+export const EDIT_EVENT = "EDIT_EVENT"
+export const DELETE_EVENT = "DELETE_EVENT"
+
+export const ADD_FRIEND = "ADD_FRIEND"
+export const GET_FRIEND = "GET_FRIEND"
+export const GET_ALL_FRIENDS = "GET_ALL_FRIENDS"
+export const REMOVE_FRIEND = "REMOVE_FRIEND"
+
+export const CREATE_REQUEST = "CREATE_REQUEST"
+export const DELETE_REQUEST = "DELETE_REQUEST"
+
+export const CREATE_TODO = "CREATE_TODO"
+export const GET_TODO = "GET_TODO"
+export const GET_TODO_BY_ACCOUNT = "GET_TODO_BY_ACCOUNT"
+export const EDIT_TODO = "EDIT_TODO"
+export const DELETE_TODO = "DELETE_TODO"
