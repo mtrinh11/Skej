@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import {Button, Textfield} from "react-md"
 import {} from '../store/actions/EventActions'
 
@@ -138,7 +138,3 @@ const CreateEvent = (props) => {
     )
 }
 export default connect(mapStateToProps, mapActionToProps)(CreateEvent)
-
-
-
-}
