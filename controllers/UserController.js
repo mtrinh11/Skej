@@ -74,5 +74,5 @@ module.exports = {
   CreateUser,
   GetUser,
   LoginUser,
-  SessionStatus,
+  SessionStatus
 };

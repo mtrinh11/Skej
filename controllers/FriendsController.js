@@ -82,5 +82,5 @@ module.exports = {
   AddFriend,
   GetFriend,
   GetAllFriends,
-  RemoveFriend,
+  RemoveFriend
 };

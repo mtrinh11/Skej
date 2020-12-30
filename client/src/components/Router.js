@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Calendar from '../pages/Calendar'
+import CreateEvent from '../pages/CreateEvent'
 
 const Router = (props) => {
   return (
