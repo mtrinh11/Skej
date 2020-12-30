@@ -13,13 +13,8 @@ const AddFriend = async (request, response) => {
       user_id: friendId,
       friend_id: userId,
     });
-    console.log(
-      "FriendController: AddFriend hits. User and Friend:",
-      newFriendship
-    );
     response.send(newFriendship);
   } catch (error) {
-    console.log("FriendController: Friend fails");
     throw error;
   }
 };
@@ -39,9 +34,7 @@ const GetFriend = async (request, response) => {
       ],
     });
     response.send(friend);
-    console.log("FriendController: GetFriend hits");
   } catch (error) {
-    console.log("FriendController: GetFriend fails");
     throw error;
   }
 };
@@ -56,9 +49,7 @@ const GetAllFriends = async (request, response) => {
       ],
     });
     response.send(allFriends);
-    console.log("FriendController: GetAllFriends hits");
   } catch (error) {
-    console.log("FriendController: GetAllFriends fails");
     throw error;
   }
 };
@@ -79,12 +70,10 @@ const RemoveFriend = async (request, response) => {
         friend_id: userId,
       },
     });
-    console.log("FriendController: RemoveFriend hits");
     response.send({
-      message: `Deleted friendship with an id of ${friendId}. :C`,
+      message: `Deleted friendship. :C`,
     });
   } catch (error) {
-    console.log("FriendController: RemoveFriend fails");
     throw error;
   }
 };
