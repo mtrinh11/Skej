@@ -1,6 +1,6 @@
 import ApiClient from "./ApiServices";
 
-export const __CreateTodo = (data) => {
+export const __CreateTodo = async (data) => {
     try {
         const res = await ApiClient.post('/todo/create', data)
         return res.data
