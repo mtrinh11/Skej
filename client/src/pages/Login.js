@@ -30,11 +30,12 @@ const Login = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.submitGetUser({
-      email: props.authState.inputEmail,
-      password: props.authState.inputPassword
-    })
     try {
+      props.submitGetUser({
+        email: props.authState.inputEmail,
+        password: props.authState.inputPassword
+      })
+      props.history.push('/calendar')
     } catch (error) {
       throw error;
     }

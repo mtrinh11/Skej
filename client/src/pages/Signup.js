@@ -51,7 +51,7 @@ const Signup = (props) => {
         userName: props.authState.inputUsername,
         password: props.authState.inputPassword
       })
-
+      props.history.push('/login')
     } catch (error) {
       throw error;
     }
