@@ -3,7 +3,7 @@ import './styles/Global.css'
 
 function App() {
   return (
-    <div>
+    <div style={{height: '100%'}}>
       <Router />
     </div>
   );
