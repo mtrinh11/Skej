@@ -7,24 +7,24 @@ import interactionPlugin from '@fullcalendar/interaction';
 
 const Calendar = () => {
 
-  const mapStateToProps = (state) => {
-    return {
+  // const mapStateToProps = (state) => {
+  //   return {
       
-    };
-  };
+  //   };
+  // };
   
-  const mapActionToProps = (dispatch) => {
-    return {
+  // const mapActionToProps = (dispatch) => {
+  //   return {
       
-    };
-  };
+  //   };
+  // };
 
   const handleDateClick = (e) => {
     alert(e.dateStr)
   }
 
   return (
-    <div className="calendar">
+    <div className="calendar" style={{objectFit: 'fill'}}>
       <FullCalendar 
       plugins={[timeGridPlugin, interactionPlugin]} 
       initialView="timeGridWeek"
@@ -39,4 +39,5 @@ const Calendar = () => {
   );
 };
 
-export default connect(mapStateToProps, mapActionToProps)(Calendar);
+export default(Calendar);
+// connect(mapStateToProps, mapActionToProps)
