@@ -5,9 +5,9 @@ Router.post("/create", controller.CreateEvent)
 Router.get("/all", controller.GetAllEvents)
 Router.get("/:event_id", controller.GetOneEvent)
 Router.get("/user/:user_id", controller.GetEventsByUser)
-Router.get("/friend/:friendId/", controller.GetEventsOfFriends)
+Router.get("/friend/:user_id/", controller.GetEventsOfFriends)
 Router.put("/:event_id", controller.EditEvent)
 Router.delete("/:event_id", controller.DeleteEvent)
 
 
-module.exports = Router
+module.exports = Router;
