@@ -21,6 +21,7 @@ const mapActionToProps = (dispatch) => {
 };
 
 const Login = (props) => {
+
   const [loadingError, setloadingError] = useState(false)
 
   const handleEmailChange = ({ target }) => {
@@ -32,6 +33,7 @@ const Login = (props) => {
   };
 
   const handleSubmit = async (e) => {
+    console.log(props)
     e.preventDefault();
     try {
       await props.submitGetUser({

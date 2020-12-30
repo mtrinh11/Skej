@@ -90,4 +90,5 @@ const Calendar = () => {
   );
 };
 
-export default connect(mapStateToProps, mapActionToProps)(Calendar);
+export default(Calendar);
+// connect(mapStateToProps, mapActionToProps)
