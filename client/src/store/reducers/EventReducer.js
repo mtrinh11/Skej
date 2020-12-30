@@ -10,7 +10,16 @@ import {
 
 const initialState = {
   events: [],
-  newEvent: "",
+  newEvent: {
+    inputTitle: '',
+    inputDescription: '',
+    inputStartDate: '',
+    inputEndDate: '',
+    inputStartTime: '',
+    inputEndTime: '',
+    inputImportance: '',
+    inputPrivacy: false
+  }
 };
 
 const EventReducer = (state = initialState, action) => {
