@@ -36,9 +36,9 @@ export const __GetEventsByUser = async (userId) => {
   }
 };
 
-export const __GetEventsOfFriends = async (userId) => {
+export const __GetEventsOfFriends = async (friendId) => {
   try {
-    const res = await ApiClient.get(`/event/friend/${userId}`);
+    const res = await ApiClient.get(`/event/friend/${friendId}`);
     return res.data;
   } catch (error) {
     throw error;
