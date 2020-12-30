@@ -14,12 +14,6 @@ const initialState = {
 };
 
 const EventReducer = (state = initialState, action) => {
-<<<<<<< HEAD
-    switch (action.type){
-        default:
-            return {...state}
-    }
-=======
   switch (action.type) {
     case CREATE_EVENT:
       return {
@@ -45,7 +39,6 @@ const EventReducer = (state = initialState, action) => {
     default:
       return { ...state };
   }
->>>>>>> 6279f849671ea7a34bc264cab75aa0fbcd6c964c
 };
 
 export default EventReducer;
