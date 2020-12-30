@@ -9,6 +9,10 @@ const AddFriend = async (request, response) => {
       user_id: userId,
       friend_id: friendId,
     });
+    await Friends.create({
+      user_id: friendId,
+      friend_id: userId,
+    });
     console.log(
       "FriendController: AddFriend hits. User and Friend:",
       newFriendship
@@ -67,6 +71,12 @@ const RemoveFriend = async (request, response) => {
       where: {
         user_id: userId,
         friend_id: friendId,
+      },
+    });
+    await Friends.destroy({
+      where: {
+        user_id: friendId,
+        friend_id: userId,
       },
     });
     console.log("FriendController: RemoveFriend hits");
