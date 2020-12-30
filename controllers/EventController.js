@@ -3,7 +3,17 @@ const { Event, User, Friends } = require("../models");
 const CreateEvent = async (request, response) => {
   try {
     const body = request.body;
-    const event = await Event.create(body);
+    const event = await Event.create({
+      user_id: body.userId,
+      title: body.title,
+      description: body.description,
+      start: body.start,
+      end: body.end,
+      start_time: body.startTime,
+      end_time: body.endTime,
+      importance: body.importance,
+      private: body.private,
+    });
     console.log("EventController: CreateEvent hits. Event:", event);
     response.send(event);
   } catch (error) {
@@ -67,8 +77,8 @@ const DeleteEvent = async (request, response) => {
     let eventId = parseInt(request.params.event_id);
     await Event.destroy({
       where: {
-        id: eventId
-      }
+        id: eventId,
+      },
     });
     response.send({ message: `Deleted Event with an id of ${eventId}` });
     console.log("EventController: DeleteEvent hits");
@@ -80,24 +90,38 @@ const DeleteEvent = async (request, response) => {
 
 const GetEventsOfFriends = async (req, res) => {
   try {
-    const events = await Friends.findAll({
+    const friends = await Friends.findAll({
       where: { user_id: req.params.user_id },
       include: [
         {
           model: User,
           as: "friends",
-          attributes: ["id", "user_name"],
-          include: [
-            { model: Event },
-            // {
-            //   model: Event,
-            //   where: { private: true },
-            //   attributes: ["start_time", "end_time"],
-            // },
-          ],
+          attributes: ["id"],
         },
       ],
     });
+    let events = [];
+    for (let i = 0; i < friends.length; i++) {
+      let id = friends[i].friend_id;
+      const event = await Event.findAll({
+        where: { user_id: id, private: true },
+        attributes: ["start", "end", "start_time", "end_time"],
+        include: [
+          {
+            model: User,
+            attributes: ["id", "user_name"],
+          },
+        ],
+        where: { user_id: id, private: false },
+        include: [
+          {
+            model: User,
+            attributes: ["id", "user_name"],
+          },
+        ],
+      });
+      event.length > 0 ? (events = events.concat(event)) : null;
+    }
     res.send(events);
   } catch (error) {
     throw error;
